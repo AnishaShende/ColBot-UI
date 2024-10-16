@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIIT College</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <!-- Link to external stylesheet -->
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <h1>Vishwakarma Institute of Information Technology</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Departments</a></li>
+        <li><a href="#">Admissions</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+      <h1>Welcome to VIIT</h1>
+      <p>
+        Empowering students with knowledge and skills for a better tomorrow.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 Vishwakarma Institute of Information Technology</p>
+    </footer>
+
+    <!-- Chatbot Icon -->
+    <div class="chatbot-icon" onclick="toggleChatbot()">
+      <img
+        src="https://img.icons8.com/ios-filled/50/ffffff/chat.png"
+        alt="Chatbot"
+      />
+    </div>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-window" id="chatbotWindow"></div>
+
+    <script>
+      // Toggle the chatbot visibility
+      console.log("inside script");
+      function toggleChatbot() {
+        const chatbotWindow = document.getElementById("chatbotWindow");
+        if (chatbotWindow.innerHTML === "") {
+          // Load the chatbot HTML content when the chatbot is first opened
+          loadChatbotContent();
+        }
+        chatbotWindow.classList.toggle("visible");
+      }
+
+      // Load chatbot.html content dynamically
+      function loadChatbotContent() {
+        fetch("chatbot.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("chatbotWindow").innerHTML = data;
+            // Once the content is loaded, load the chatbot script manually
+            console.log("chatbot loaded");
+            loadChatbotScript();
+          })
+
+          .catch((error) => console.log("Error loading chatbot:", error));
+      }
+
+      // Load chatbot JavaScript after content is loaded
+      function loadChatbotScript() {
+        const script = document.createElement("script");
+        console.log("loading chatbot script");
+        script.src = "scripts/chatbotscript.js"; // Make sure the path is correct
+        document.body.appendChild(script);
+      }
+    </script>
+    <script src="scripts/script.js"></script>
+    <!-- Link to external JavaScript file -->
+  </body>
+</html>
